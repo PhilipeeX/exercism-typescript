@@ -48,7 +48,7 @@ describe('Resistor Colors', () => {
     expect(decodedResistorValue(['black', 'grey', 'black'])).toEqual('8 ohms')
   })
 
-  xit('Ignore extra colors', () => {
+  it('Ignore extra colors', () => {
     expect(decodedResistorValue(['blue', 'green', 'yellow', 'orange'])).toEqual(
       '650 kiloohms'
     )

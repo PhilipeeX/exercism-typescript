@@ -16,6 +16,8 @@ export function decodedResistorValue(colors: Array<string>): string {
   let result: string = '';
   let zeros: string = "";
   let index = 0;
+  colors = colors.slice(0,3);
+
   for (const color of colors) {
     if (index == colors.length - 1) {
         if (color === 'black') {
@@ -31,6 +33,9 @@ export function decodedResistorValue(colors: Array<string>): string {
     result += numbersColors[color];
     index ++;
   }
+  if (result != "0") {
+    result = removeLeadingZeros(result);
+  }
   if (result.slice(-9) === "000000000") {
     return result.slice(0,-9) + ' gigaohms'
   }
@@ -40,5 +45,9 @@ export function decodedResistorValue(colors: Array<string>): string {
       return result.slice(0,-6) + ' megaohms'
   }
   return result + ' ohms';
+}
+
+function removeLeadingZeros(input: string): string {
+  return input.replace(/^0+/, '');
 }
 
