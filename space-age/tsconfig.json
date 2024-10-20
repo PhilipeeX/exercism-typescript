@@ -20,6 +20,10 @@
     // Because jest-resolve isn't like node resolve, the absolute path must be .ts
     "allowImportingTsExtensions": true,
     "noEmit": true,
+    
+    // Essa configuração faz parte do dap debug de typescript, para reverter tem que configurar noEmit pra true.
+    // "outDir": "./dist",
+    // "sourceMap": true
 
     // Because we'll be using babel: ensure that Babel can safely transpile
     // files in the TypeScript project.
