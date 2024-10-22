@@ -1,15 +1,13 @@
-let points: number = 0;
-
 export function score(x: number, y: number): number {
+  const intersection = x ** 2 + y ** 2;
 
-  if (x ** 2 + y ** 2 <= 1) {
-    points = 10;
-  } else if (x ** 2 + y ** 2 <= 25) {
-    points = 5;
-  }else if (x ** 2 + y ** 2 <= 100) {
-    points = 1;
-  }else {
-    points = 0;
+  if (intersection <= 1) {
+    return 10;
+  } else if (intersection <= 25) {
+    return 5;
+  } else if (intersection <= 100) {
+    return 1;
+  } else {
+    return 0;
   }
-  return points;
 }
