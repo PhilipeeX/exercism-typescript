@@ -1,14 +1,15 @@
-export function count(words: string) {
-  let wordMap = new Map<string, number>(Object.entries({}))
-  let wordsSplitado: string[];
+export function count(words: string): Map<string, number> {
+  const wordMap = new Map<string, number>(Object.entries({}))
+  const wordsWithoutApostrophe = words.replace(/(?<![a-zA-Z])'|'(?![a-zA-Z])/g, '');
 
-  words.split(/[^a-zA-Z0-9']+/g).forEach(element => {
-    const wordCount = wordMap.has(element) ? wordMap.get(element)! + 1 : 1;
-
-    wordMap.set(element, wordCount);
+  wordsWithoutApostrophe.split(/[^a-zA-Z0-9']+/g).forEach(element => {
+    const elementNormalized: string = element.toLowerCase();
+    const wordCount = wordMap.has(elementNormalized) ? wordMap.get(elementNormalized)! + 1 : 1;
+    
+    if (element !== "") {
+      wordMap.set(elementNormalized, wordCount);
+    }
   });
 
-
-  // return wordsSplitado;
   return wordMap;
 }
